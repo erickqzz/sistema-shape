@@ -259,6 +259,10 @@ render();
   const el = document.getElementById('intro');
   const txt = document.getElementById('intro-txt');
   const bg = document.getElementById('intro-bg');
+    if (!el || !txt || !bg) {
+    iniciar();
+    return;
+  }
   const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
   let pular = false, fechado = false;
 
