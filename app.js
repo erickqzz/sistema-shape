@@ -99,9 +99,6 @@ function fecharModal() {
   const m = document.getElementById('modal');
   if (m) m.remove();
 }
-
-
-function convite() {
   
 function convite() {
   modal(`
@@ -121,7 +118,6 @@ function convite() {
       <button class="btn" onclick="gameOver()">NÃO</button>
     </div>
   `, 'caixa-neon');
-}
 }
 
 function pedirNome() {
