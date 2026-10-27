@@ -12,10 +12,10 @@ const ATRIBUTOS = {
 const TAREFAS = [
   { id: 'agua', nome: 'Beber 2L de água', cat: 'Nutrição', attr: 'hidratacao', pts: 50 },
   { id: 'prot', nome: 'Bater meta de proteína', cat: 'Nutrição', attr: 'forca', pts: 60 },
-  { id: 'flex', nome: '100 flexões', cat: 'Treino', attr: 'forca', pts: 80 },
-  { id: 'abd', nome: '100 abdominais', cat: 'Treino', attr: 'vitalidade', pts: 80 },
-  { id: 'corr', nome: 'Correr 5 km', cat: 'Treino', attr: 'vitalidade', pts: 100 },
-  { id: 'along', nome: 'Alongar 10 minutos', cat: 'Treino', attr: 'agilidade', pts: 40 },
+  { id: 'flex', nome: '20 flexões', cat: 'Treino', attr: 'forca', pts: 40 },
+  { id: 'abd', nome: '20 abdominais', cat: 'Treino', attr: 'vitalidade', pts: 40 },
+  { id: 'corr', nome: 'Correr 5 km', cat: 'Treino', attr: 'vitalidade', pts: 60 },
+  { id: 'along', nome: 'Alongar 3 minutos', cat: 'Treino', attr: 'agilidade', pts: 20 },
   { id: 'sono', nome: 'Dormir 8 horas', cat: 'Recuperação', attr: 'disciplina', pts: 50 },
   { id: 'ler', nome: 'Ler 10 páginas', cat: 'Mente', attr: 'inteligencia', pts: 40 },
   { id: 'foco', nome: '1 hora de foco sem celular', cat: 'Mente', attr: 'foco', pts: 50 },
@@ -84,19 +84,44 @@ function concluir(id) {
 }
 
 // ====== MODAIS E FLUXO DE NOVO JOGADOR ======
-function modal(html) {
+
+function modal(html, classe = '') {
   fecharModal();
+
   const m = document.createElement('div');
   m.id = 'modal';
-  m.innerHTML = `<div class="caixa">${html}</div>`;
+  m.innerHTML = `<div class="caixa ${classe}">${html}</div>`;
+
   document.body.appendChild(m);
 }
-function fecharModal() { const m = document.getElementById('modal'); if (m) m.remove(); }
+
+function fecharModal() {
+  const m = document.getElementById('modal');
+  if (m) m.remove();
+}
+
 
 function convite() {
-  modal(`<h2>Novo Jogador</h2>
-    <p>Você adquiriu as qualificações para ser um <b>Jogador</b>. Suas metas de shape morrerão no abismo se você recusar. <b>Você aceita?</b></p>
-    <div class="duo"><button class="btn azul" onclick="pedirNome()">Sim</button><button class="btn verm" onclick="gameOver()">Não</button></div>`);
+  
+function convite() {
+  modal(`
+    <div class="titulo-neon">
+      <span class="icone-neon">!</span>
+      <span>NOTIFICAÇÃO</span>
+    </div>
+
+    <p class="mensagem-neon">
+      Você deseja se tornar um jogador?
+    </p>
+
+    <p class="pergunta-neon">Você aceita?</p>
+
+    <div class="duo">
+      <button class="btn" onclick="pedirNome()">SIM</button>
+      <button class="btn" onclick="gameOver()">NÃO</button>
+    </div>
+  `, 'caixa-neon');
+}
 }
 
 function pedirNome() {
